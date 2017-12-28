@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        mapbox:mapbox_cameraTargetLat="40.73581"
+        mapbox:mapbox_cameraTargetLng="-73.99155"
+        mapbox:mapbox_styleUrl="@string/mapbox_style_mapbox_streets"
+        mapbox:mapbox_cameraTilt="20"
+        mapbox:mapbox_cameraZoom="14"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/latitude_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="latitude"/>
+
+        <EditText
+            android:id="@+id/longitude_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="longitude"/>
+
+    </LinearLayout>
+
+    <!--<RadioGroup-->
+        <!--android:id="@+id/poi_count_rg"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/single_poi_btn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:checked="true"-->
+            <!--android:text="单poi"/>-->
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/multi_poi_btn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="多poi"/>-->
+
+    <!--</RadioGroup>-->
+
+    <RadioGroup
+        android:id="@+id/poi_type_rb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/driving_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="驾车"/>
+
+        <RadioButton
+            android:id="@+id/walking_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="步行"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/info_tv"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="信息栏"/>
+
+    <Button
+        android:id="@+id/sure_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start"/>
+
+</LinearLayout>

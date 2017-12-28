@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -22,6 +21,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yukai.mapboxdemo.HttpUtil.HttpRequestUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
@@ -33,6 +36,8 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,9 +110,29 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 6:
                 drawpolyRegion();
+                break;
+            case 7:
+                sendPoiService();
+                break;
             default:
                 return;
         }
+    }
+
+    private void sendPoiService(){
+        final String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/coffee.json?&proximity=-77.032,38.912&limit=10&types=poi&access_token=" + getString(R.string.access_token);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                JsonObject jsonObject = HttpRequestUtil.getXpath(url);
+                JsonArray jsonArray = (JsonArray) jsonObject.get("features");
+                int size = jsonArray.size();
+                for (int i = 0;i < size;i++) {
+                        JsonElement jsonElement = jsonArray.get(i);
+                        //jsonElement.
+                }
+            }
+        }).start();
     }
 
     private void drawpolyLine(){
